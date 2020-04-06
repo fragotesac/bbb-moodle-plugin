@@ -1,0 +1,134 @@
+2.1.15 (2016051920)
+Bug: Fixed issue timeout on validation of BBB server while diplaying the activity in Moodle.
+
+2.1.14 (2016051919)
+Bug: Fixed issue participant list not considering rules based on Moodle roles when user had multiple.
+Bug: Fixed issue participant list not applying the default rule correctly.
+
+2.1.13 (2016051918)
+Bug: Fixed issue with hint on hovering participant list button
+Bug: Fixed issue participant list not considering rules based on Moodle roles.
+
+2.1.12 (2016051917)
+Hot fix: After some changes introduced in v2.1.7 the way participants are handled changed. As the permissions are now based in role and user id, previous settings were ignored. (CONTRIB-6925)
+Bug: Fixed issue with mod_form not being rendered when participants were not set (happened with activities imported from old versions).
+Bug: Fixed issue with all recordings shown to all users when separated groups were set.
+
+2.1.11 (2016051916)
+Bug: Fixed issue with role names not properly shown in Totara.
+Bug: Fixed issue with roles in participant list not showing correctly.
+Bug: Fixed issue with users enrolled and no active being included in participant list.
+Bug: Fixed issue with moderators being considered viewers.
+Bug: Fixed issue with message shown to non-moderators when the room is not open yet.
+Bug: Fixed issue with messages not properly sent when the room/activity was added/updated.
+
+2.1.10 (2016051915)
+Hot fix: After some changes introduced in v2.1.7 the way participants are handled changed. This affected the way the new UI renders the settings form. (CONTRIB-6900)
+Bug: Fixed Participants for style in mod_form not working in all versions.
+Bug: Fixed issue with action buttons not being updated on publish/unpublish and delete recordings
+Bug: Fixed style in 'Import recordings' and 'Go back' buttons.
+
+
+2.1.9 (2016051914)
+Bug: Fixed Participants for style in mod_form and buttons in view.
+Bug: Fixed Participants for style in mod_form not working in all versions.
+
+2.1.8 (2016051913)
+Bug: Fixed issue with custom role names failing when they were edited after being used.
+Bug: Fixed issue with separated groups.
+
+2.1.7 (2016051911)
+Bug: Fixed issue with roles not shown correctly in Totara and any custom implementation.
+Bug: Fixed issue with a string not properly localized.
+
+2.1.6 (2016051910)
+Bug: Fixed issue with groups not shown correctly when set up as separated and no groups where created. (CONTRIB-6652)
+Bug: Fixed issue with references to recordings and imported links duplicated when a backup is restored in a different course.
+Bug: Fixed issue with references to recordings and imported links not being properly restored when using the option import from backups.
+Bug: Fixed issue with guest users not able to join as moderators even though the role is matched with the role with BBB .
+
+2.1.5 (2016051909)
+Bug: Fixed issue with actions for recording management not working in instances with schedule. (CONTRIB-6654)
+Bug: Standardized output in intermediate page for activities not started/ended.
+Bug: Fixed issue with past BBB sessions listed as upcoming in the course overview block. (CONTRIB-6650)
+Bug: Fixed issue with default bigbluebutton server settings. (CONTRIB-6630)
+Bug: Rework to prevent potential issue with recordings not fetched when the course has too many groups.
+
+2.1.4 (2016051908)
+Bug: Reverted changes made to the language strings in previous release.
+
+2.1.3 (2016051907)
+Bug: Fixed issue with course logs not being backup/restore.
+Bug: Fixed issue with localized event description affecting multi-language sites.
+Bug: Fixed issue with activities not shown in the dashboard block in Moodle 3.x.
+
+2.1.2 (2016051906)
+Bug: Fixed version format for recording list so it works for formats used in non western countries.
+Bug: Fixed issue with user limit not being correctly enforced when default limit was updated and edition was not allowed. (This bug only affected sites making use of the user limit feature)
+Bug: Fixed issue in "wait for moderator" feature. The only way to enable the join session was to refresh the page manually.
+
+2.1.1 (2016051905)
+Bug: Fixed issue with database upgrade when updating from versions older than 2.1.x. (This bug only affected users upgrading directly from 1.x to 2.1.0).
+
+2.1.0 (2016051904)
+Tag: Bumped version and release tags and updated maturity to stable
+
+2.1.0-rc2 (2016051903)
+Bug: Fixed missing variable triggering warning message showing up on in development mode
+Bug: Fixed bug in format of imported recordings on YUI table
+Bug: Fixed a bug in import recording. Recordings from deleted activities were not considered.
+
+2.1.0-rc1 (2016051902)
+Tag: Bumped release tag and updated maturity
+
+2.1.0-b3 (2016051902)
+Bug: Considers all the imported recordings corresponding to a course.
+Bug: Duration was not shown properly in recordings
+Bug: All events are localized
+Bug: recordings not showing up after restore
+Bug: backup/restore were not working on logs
+Bug: Added missing event
+
+2.1.0-b2 (2016051901)
+Fixed bug: Fix for action management not working in recordings.
+
+2.1.0-b1 (2016051900)
+Enhancement: Links to recordings can now be imported into a room/activity from a different course room/activity.
+Bug: Fixed backups. The logs, a secondary table dependent of mdl_bigbluebuttonbn used for tracking meeting creation is now included as part of the backup.
+Bug: Fixed issue with database prefix.
+
+2.0.4 (2015080611)
+Bug: Fixed a bug introduced in the previous revision that was making pre-uploaded presentations to be ignored when a new activity was created.
+Bug: Changed wording for message shown when user is waiting for moderator.
+
+2.0.3 (2015080610)
+Enhancement: Make sure the php-curl extension is installed. For pre-uploading slides, the use of the php-curl extension is required. If it is not installed or enabled the feature won't be available.
+Bug: Toggle form for tagging sessions was flicking for a second when the activity page was shown.
+Bug: When creating a new and pre-uploading presentation is turned off an error messages comes up.
+Bug: When for security reasons either the webserver or the proxy ahead of the webserver(s) adds the header x-content-type-options: nosniff to force the MIME Type verification, the javascript in the client doesn't work in Chrome/IE.
+
+2.0.2 (2015080609)
+Bug: When using localization in a language different than English, the recording table produced for RecordingsBN showed an 'Invalid date' message.
+
+2.0.1 (2015080608)
+Fixed bug: Adding a presentation file while creating a new BigBlueButtonBN activity failed. Only after editing the activity and adding a presentation file again would let the feature work.
+Fixed bug: A warning message was shown in the logs when joining a session
+
+1.0.7 (April 8, 2012)
+Enhancement: Added Spanish and French.
+Enhancement: Synced API calls with BigBlueButton 0.8-beta-4.
+
+1.0.6 (October 31, 2011)
+Enhancement: Extended supported languages (ru), fixed a bug in bigbluebuttonbn/index.php
+
+1.0.5 (October 19, 2011)
+Enhancement: Extended supported languages
+
+1.0.4 (October 12, 2011)
+Enhancement: Added support for separate groups
+
+1.0-b2 (September 16, 2011)
+Enhancement: Removed unneeded code related to grade scales
+
+1.0-b1 (September 13, 2011)
+Tag: Beta release for use with BigBlueButton 0.71a and BigBlueButton 0.8-beta servers

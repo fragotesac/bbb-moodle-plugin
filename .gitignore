@@ -1,0 +1,5 @@
+.buildpath
+.project
+.settings*
+deploy*
+config.php
