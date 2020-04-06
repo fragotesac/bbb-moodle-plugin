@@ -67,8 +67,8 @@ $bbbsession['administrator'] = has_capability('moodle/category:manage', $context
 $bbbsession['managerecordings'] = ($bbbsession['administrator'] || has_capability('mod/bigbluebuttonbn:managerecordings', $context));
 
 // BigBlueButton server data.
-$bbbsession['endpoint'] = bigbluebuttonbn_get_cfg_server_url($cm->server);
-$bbbsession['shared_secret'] = bigbluebuttonbn_get_cfg_shared_secret($cm->server);
+$bbbsession['endpoint'] = bigbluebuttonbn_get_cfg_server_url($bigbluebuttonbn->server);
+$bbbsession['shared_secret'] = bigbluebuttonbn_get_cfg_shared_secret($bigbluebuttonbn->server);
 
 // Server data.
 $bbbsession['modPW'] = $bigbluebuttonbn->moderatorpass;
