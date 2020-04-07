@@ -62,8 +62,8 @@ $BIGBLUEBUTTONBN_CFG->bigbluebuttonbn_cluster = [
 // This default URL is for a BigBlueButton server provided by Blindside
 // Networks that you can use for testing.
 
-$BIGBLUEBUTTONBN_CFG->bigbluebuttonbn_server_url = 'http://test-install.blindsidenetworks.com/bigbluebutton/';
-$BIGBLUEBUTTONBN_CFG->bigbluebuttonbn_shared_secret = '8cd8ef52e8e101574e400365b55e11a6';
+/*$BIGBLUEBUTTONBN_CFG->bigbluebuttonbn_server_url = 'http://test-install.blindsidenetworks.com/bigbluebutton/';
+$BIGBLUEBUTTONBN_CFG->bigbluebuttonbn_shared_secret = '8cd8ef52e8e101574e400365b55e11a6';*/
 
 
 
