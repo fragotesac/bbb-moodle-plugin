@@ -93,5 +93,5 @@ if (isset($_GET['update'])) {
         'fullpath' => '/mod/bigbluebuttonbn/module.js',
         'requires' => array('datasource-get', 'datasource-jsonschema', 'datasource-polling'),
     );
-    $PAGE->requires->js_init_call('M.mod_bigbluebuttonbn.participantCount', array(), false, $jsmodule);
+    $PAGE->requires->js_init_call('M.mod_bigbluebuttonbn.serverParticipantCount', array(), false, $jsmodule);
 }
