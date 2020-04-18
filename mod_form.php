@@ -12,6 +12,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once(dirname(__FILE__).'/locallib.php');
+require_once(dirname(__FILE__).'/bbb_data_info.php');
 require_once($CFG->dirroot.'/course/moodleform_mod.php');
 
 class mod_bigbluebuttonbn_mod_form extends moodleform_mod {
@@ -63,11 +64,31 @@ class mod_bigbluebuttonbn_mod_form extends moodleform_mod {
         //-------------------------------------------------------------------------------
         $mform->addElement('header', 'general', get_string('mod_form_block_general', 'bigbluebuttonbn'));
 
-	     $mform->addElement('select', 'server', get_string('mod_form_field_server', 'bigbluebuttonbn'), $servers);
- 	     $mform->setDefault('server', '');
+        $mform->addElement('select', 'server', get_string('mod_form_field_server', 'bigbluebuttonbn'), $servers);
+        $mform->setDefault('server', '');
+
+        $connectedUsersBlock = '<div id="fitem_id_total_connected_users" class="form-group row  fitem d-none">'.
+            '<div class="col-md-3">'.
+            '<span class="float-sm-right text-nowrap">'.
+            '</span>'.
+            '<label class="col-form-label d-inline " for="id_total_connected_users">'.
+                'Connected Users'.
+            '</label>'.
+            '</div>'.
+            '<div class="col-md-9 form-inline felement" data-fieldtype="text">'.
+            '<input type="text" class="form-control text-center" name="total_connected_users" id="totalUsers" value="?" size="6" readonly="readonly">'.
+            '<div class="form-control-feedback invalid-feedback" id="id_error_total_connected_users">'.
+
+            '</div>'.
+            '<input type="checkbox" name="show_total_connected_users" class="form-check-input ml-2" id="chkShowTotalUsers" value="1" size="">'.
+
+            '</label>'.
+            '</div>'.
+            '</div>';
+        $mform->addElement('html', $connectedUsersBlock);
 
 
-	     $mform->addElement('text', 'name', get_string('mod_form_field_name','bigbluebuttonbn'), 'maxlength="64" size="32"');
+        $mform->addElement('text', 'name', get_string('mod_form_field_name','bigbluebuttonbn'), 'maxlength="64" size="32"');
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', null, 'required', null, 'client');
 
@@ -270,33 +291,33 @@ class mod_bigbluebuttonbn_mod_form extends moodleform_mod {
     private function mform_participant_renderer_old_format($mform, $context, $participantselection, $participantlist) {
         global $CFG;
         $htmlparticipantselection = ''.
-             '<div class="fitem fitem_fselect">'."\n".
-             '  <div class="fitemtitle">'."\n".
-             '    <label for="bigbluebuttonbn_participant_selectiontype">'.get_string('mod_form_field_participant_add', 'bigbluebuttonbn').' </label>'."\n".
-             '  </div>'."\n".
-             '  <div class="felement fselect">'."\n".
-             '    <select id="bigbluebuttonbn_participant_selection_type" onchange="bigbluebuttonbn_participant_selection_set(); return 0;" class="select custom-select">'."\n".
-             '      <option value="all" selected="selected">'.get_string('mod_form_field_participant_list_type_all', 'bigbluebuttonbn').'</option>'."\n".
-             '      <option value="role">'.get_string('mod_form_field_participant_list_type_role', 'bigbluebuttonbn').'</option>'."\n".
-             '      <option value="user">'.get_string('mod_form_field_participant_list_type_user', 'bigbluebuttonbn').'</option>'."\n".
-             '    </select>'."\n".
-             '    &nbsp;&nbsp;'."\n".
-             '    <select id="bigbluebuttonbn_participant_selection" disabled="disabled" class="select custom-select">'."\n".
-             '      <option value="all" selected="selected">---------------</option>'."\n".
-             '    </select>'."\n".
-             '    &nbsp;&nbsp;'."\n".
-             '    <input value="'.get_string('mod_form_field_participant_list_action_add', 'bigbluebuttonbn').'" class="btn btn-secondary" type="button" id="id_addselectionid" onclick="bigbluebuttonbn_participant_add(); return 0;" />'."\n".
-             '  </div>'."\n".
-             '</div>'."\n";
+            '<div class="fitem fitem_fselect">'."\n".
+            '  <div class="fitemtitle">'."\n".
+            '    <label for="bigbluebuttonbn_participant_selectiontype">'.get_string('mod_form_field_participant_add', 'bigbluebuttonbn').' </label>'."\n".
+            '  </div>'."\n".
+            '  <div class="felement fselect">'."\n".
+            '    <select id="bigbluebuttonbn_participant_selection_type" onchange="bigbluebuttonbn_participant_selection_set(); return 0;" class="select custom-select">'."\n".
+            '      <option value="all" selected="selected">'.get_string('mod_form_field_participant_list_type_all', 'bigbluebuttonbn').'</option>'."\n".
+            '      <option value="role">'.get_string('mod_form_field_participant_list_type_role', 'bigbluebuttonbn').'</option>'."\n".
+            '      <option value="user">'.get_string('mod_form_field_participant_list_type_user', 'bigbluebuttonbn').'</option>'."\n".
+            '    </select>'."\n".
+            '    &nbsp;&nbsp;'."\n".
+            '    <select id="bigbluebuttonbn_participant_selection" disabled="disabled" class="select custom-select">'."\n".
+            '      <option value="all" selected="selected">---------------</option>'."\n".
+            '    </select>'."\n".
+            '    &nbsp;&nbsp;'."\n".
+            '    <input value="'.get_string('mod_form_field_participant_list_action_add', 'bigbluebuttonbn').'" class="btn btn-secondary" type="button" id="id_addselectionid" onclick="bigbluebuttonbn_participant_add(); return 0;" />'."\n".
+            '  </div>'."\n".
+            '</div>'."\n";
 
 
         $htmlparticipantselection .= ''.
-             '<div class="fitem">'."\n".
-             '  <div class="fitemtitle">'."\n".
-             '    <label for="bigbluebuttonbn_participant_list">'.get_string('mod_form_field_participant_list', 'bigbluebuttonbn').' </label>'."\n".
-             '  </div>'."\n".
-             '  <div class="felement fselect">'."\n".
-             '    <table id="participant_list_table">'."\n";
+            '<div class="fitem">'."\n".
+            '  <div class="fitemtitle">'."\n".
+            '    <label for="bigbluebuttonbn_participant_list">'.get_string('mod_form_field_participant_list', 'bigbluebuttonbn').' </label>'."\n".
+            '  </div>'."\n".
+            '  <div class="felement fselect">'."\n".
+            '    <table id="participant_list_table">'."\n";
 
 
         // Add participant list
@@ -333,11 +354,11 @@ class mod_bigbluebuttonbn_mod_form extends moodleform_mod {
         }
 
         $htmlparticipantselection .= ''.
-             '    </table>'."\n".
-             '  </div>'."\n".
-             '</div>'."\n".
-             '<script type="text/javascript" src="'.$CFG->wwwroot.'/mod/bigbluebuttonbn/mod_form.js">'."\n".
-             '</script>'."\n";
+            '    </table>'."\n".
+            '  </div>'."\n".
+            '</div>'."\n".
+            '<script type="text/javascript" src="'.$CFG->wwwroot.'/mod/bigbluebuttonbn/mod_form.js">'."\n".
+            '</script>'."\n";
 
         $mform->addElement('html', $htmlparticipantselection);
 
@@ -349,10 +370,10 @@ class mod_bigbluebuttonbn_mod_form extends moodleform_mod {
         $mform->addElement('html', '<script type="text/javascript">var bigbluebuttonbn_participant_selection = {"all": [], "role": '.json_encode($roles).', "user": '.bigbluebuttonbn_get_users_json($users).'}; </script>');
         $mform->addElement('html', '<script type="text/javascript">var bigbluebuttonbn_participant_list = '.json_encode($participantlist).'; </script>');
         $bigbluebuttonbn_strings = Array( "as" => get_string('mod_form_field_participant_list_text_as', 'bigbluebuttonbn'),
-                                          "viewer" => get_string('mod_form_field_participant_bbb_role_viewer', 'bigbluebuttonbn'),
-                                          "moderator" => get_string('mod_form_field_participant_bbb_role_moderator', 'bigbluebuttonbn'),
-                                          "remove" => get_string('mod_form_field_participant_list_action_remove', 'bigbluebuttonbn'),
-                                    );
+            "viewer" => get_string('mod_form_field_participant_bbb_role_viewer', 'bigbluebuttonbn'),
+            "moderator" => get_string('mod_form_field_participant_bbb_role_moderator', 'bigbluebuttonbn'),
+            "remove" => get_string('mod_form_field_participant_list_action_remove', 'bigbluebuttonbn'),
+        );
         $mform->addElement('html', '<script type="text/javascript">var bigbluebuttonbn_strings = '.json_encode($bigbluebuttonbn_strings).'; </script>');
 
     }
@@ -363,14 +384,14 @@ class mod_bigbluebuttonbn_mod_form extends moodleform_mod {
             html_writer::select($participantselection['type_options'], 'bigbluebuttonbn_participant_selection_type',
                 $participantselection['type_selected'], array(),
                 array('id' => 'bigbluebuttonbn_participant_selection_type',
-                      'onchange' => 'M.mod_bigbluebuttonbn.modform.participant_selection_set(); return 0;')).'&nbsp;&nbsp;'.
+                    'onchange' => 'M.mod_bigbluebuttonbn.modform.participant_selection_set(); return 0;')).'&nbsp;&nbsp;'.
             html_writer::select($participantselection['options'], 'bigbluebuttonbn_participant_selection',
                 $participantselection['selected'], array(),
                 array('id' => 'bigbluebuttonbn_participant_selection', 'disabled' => 'disabled')).'&nbsp;&nbsp;'.
             html_writer::tag('input', '', array('id' => 'id_addselectionid', 'type' => 'button', 'class' => 'btn btn-secondary',
                 'value' => get_string('mod_form_field_participant_list_action_add', 'bigbluebuttonbn'),
                 'onclick' => 'M.mod_bigbluebuttonbn.modform.participant_add(); return 0;'
-                ))
+            ))
         );
 
         $mform->addElement('html', "\n\n");
